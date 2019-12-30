@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="app">
+            <!-- Onde tudo acontece -->
+        </div>
+
+        <script src="react/build/react.js"></script>
+        <script src="react/build/react-dom.js"></script>
+        <script>
+            // Código da aplicação
+            ReactDOM.render(
+                React.DOM.h1(
+                    { 
+                        id: "my-heading",
+                        className: "display-1",
+                        style: {
+                            color: "red"
+                        }
+                    }, 
+                    React.DOM.span(null, 
+                        React.DOM.em(null, "Hell"),
+                        "o"
+                    ),
+                    " World!"
+                ),
+                document.getElementById("app")
+            );
+        </script>
+    </body>
+</html>
