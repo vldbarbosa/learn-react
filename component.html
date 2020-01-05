@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Component</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="app">
+            <!-- Onde tudo acontece -->
+        </div>
+        <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+        <script>
+            // Código da aplicação
+            var myComponent = React.createClass({
+                propTypes: {
+                    time: React.PropTypes.string.isRequired,
+                },
+                render: function(){
+                    return React.DOM.h1(
+                        null,
+                        "Meu nome é " +
+                        this.props.name +
+                        ", tenho " +
+                        this.props.idade +
+                        " anos de idade. " +
+                        this.props.time
+                    );
+                }
+            });
+            ReactDOM.render(
+                React.createElement(
+                    myComponent, 
+                    {
+                        name:"Victor",
+                        idade: 20
+                    }
+                ),
+                document.querySelector("#app")
+            );
+            
+        </script>
+    </body>
+</html>

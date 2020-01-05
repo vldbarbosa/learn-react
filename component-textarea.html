@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TextArea Counter</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="app">
+            <!-- Onde tudo acontece -->
+        </div>
+        <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+        <script>
+            // Código da aplicação
+            var TextAreaCounter = React.createClass({
+                propTypes:{
+                    text: React.PropTypes.string
+                },
+                getDefaultProps: function(){
+                    return{ text: ''};
+                },
+                getInitialState: function(){
+                    return { text: this.props.text };
+                },
+                _textChange: function(ev){
+                    this.setState({
+                        text: ev.target.value
+                    });
+                },
+                render: function(){
+                    return React.DOM.div(
+                        null,
+                        React.DOM.textarea({
+                            defaultValue:this.state.text,
+                            onChange: this._textChange
+                        }),
+                        React.DOM.h3(null, "Quantidade de caracteres na área de texto: " + this.state.text.length)
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                React.createElement(
+                    TextAreaCounter, {
+                        text: "Texto"
+                    }
+                ),
+                document.querySelector("#app")
+            );
+        </script>
+    </body>
+</html>
