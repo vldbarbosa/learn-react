@@ -6,8 +6,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
-        <div id="app">
-            <!-- Onde tudo acontece -->
+        <div class="container-fluid">
+            <div id="app">
+                <!-- Onde tudo acontece -->
+            </div>  
         </div>
         <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
@@ -15,13 +17,10 @@
             // Código da aplicação
             var TextAreaCounter = React.createClass({
                 propTypes:{
-                    text: React.PropTypes.string
-                },
-                getDefaultProps: function(){
-                    return{ text: ''};
+                    defaultValue: React.PropTypes.string
                 },
                 getInitialState: function(){
-                    return { text: this.props.text };
+                    return { text: this.props.defaultValue };
                 },
                 _textChange: function(ev){
                     this.setState({
@@ -35,19 +34,21 @@
                             defaultValue:this.state.text,
                             onChange: this._textChange
                         }),
-                        React.DOM.h3(null, "Quantidade de caracteres na área de texto: " + this.state.text.length)
+                        React.DOM.p(null, "Quantidade de caracteres na área de texto: " + this.state.text.length)
                     );
                 }
             });
 
-            ReactDOM.render(
+            var myTextAreaCounter = ReactDOM.render(
                 React.createElement(
                     TextAreaCounter, {
-                        text: "Texto"
+                        defaultValue: "Texto"
                     }
                 ),
                 document.querySelector("#app")
             );
+            
+            myTextAreaCounter.setState({text:"FALA GALERA"});
         </script>
     </body>
 </html>
