@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React + JSX + Babel</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div id="app">
+                <!-- Onde tudo acontece -->
+            </div>
+            <div id="app2">
+                <!-- Onde tudo acontece -->
+            </div>  
+        </div>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            // Código da aplicação
+            class ShoppingList extends React.Component {
+                render() {
+                    return (
+                    <div className="shopping-list">
+                        <h1>Shopping List for {this.props.name}</h1>
+                        <ul>
+                        <li>Instagram</li>
+                        <li>WhatsApp</li>
+                        <li>Oculus</li>
+                        </ul>
+                    </div>
+                    );
+                }
+            }
+            class ShoppingLists extends React.Component {
+                render() {
+                    return (
+                    <div className="shopping-lists">
+                        <h1>Shopping List for {this.props.name}</h1>
+                        <ul>
+                        <li>Instagram</li>
+                        <li>WhatsApp</li>
+                        <li>Oculus</li>
+                        </ul>
+                    </div>
+                    );
+                }
+            }
+            ReactDOM.render(
+                <ShoppingList name="Mark" />,
+                document.querySelector("#app")    
+            );
+            ReactDOM.render(
+                <ShoppingList name="Victor" />,
+                document.querySelector("#app2")    
+            );
+        </script>
+        
+    </body>
+</html>
