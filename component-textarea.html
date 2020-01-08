@@ -16,39 +16,40 @@
         <script>
             // Código da aplicação
             var TextAreaCounter = React.createClass({
-                propTypes:{
-                    defaultValue: React.PropTypes.string
+                propTypes: {
+                    defaultValue: React.PropTypes.string,
                 },
-                getInitialState: function(){
-                    return { text: this.props.defaultValue };
+                getInitialState: function() {
+                    return {
+                        text: this.props.defaultValue,
+                    };
                 },
-                _textChange: function(ev){
+                _textChange: function(ev) {
                     this.setState({
-                        text: ev.target.value
+                        text: ev.target.value,
                     });
                 },
-                render: function(){
-                    return React.DOM.div(
-                        null,
+                componentWillReceiveProps: function(newProps) {
+                    this.setState({
+                        text: newProps.defaultValue,
+                    });
+                },
+                render: function() {
+                    return React.DOM.div(null,
                         React.DOM.textarea({
-                            defaultValue:this.state.text,
-                            onChange: this._textChange
+                            value: this.state.text,
+                            onChange: this._textChange,
                         }),
-                        React.DOM.p(null, "Quantidade de caracteres na área de texto: " + this.state.text.length)
+                        React.DOM.h3(null, this.state.text.length)
                     );
                 }
             });
-
             var myTextAreaCounter = ReactDOM.render(
-                React.createElement(
-                    TextAreaCounter, {
-                        defaultValue: "Texto"
-                    }
-                ),
-                document.querySelector("#app")
+                React.createElement(TextAreaCounter, {
+                    defaultValue: "Bob",
+                }),
+                document.getElementById("app")
             );
-            
-            myTextAreaCounter.setState({text:"FALA GALERA"});
         </script>
     </body>
 </html>
